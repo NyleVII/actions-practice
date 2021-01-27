@@ -44,3 +44,5 @@ jobs:
           node-version: '14.x'
           # Set always-auth in npmrc
           always-auth: false
+      - name: Run Node
+        run: npm run start
