@@ -59,7 +59,7 @@ jobs:
           
       - name: PROD Build and push
         id: prod_docker_build
-        if: startsWith(github.ref/, 'refs/tags/' && github.event_name == 'push')
+        if: startsWith(github.ref, 'refs/tags/' && github.event_name == 'push')
         uses: docker/build-push-action@v2
         with:
           context: .
