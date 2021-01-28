@@ -59,11 +59,11 @@ jobs:
           
       - name: PROD Build and push
         id: prod_docker_build
-        if: startsWith(github.ref/, 'refs/tags/')
+        if: startsWith(github.ref/, 'refs/tags/' && github.event_name == 'push')
         uses: docker/build-push-action@v2
         with:
           context: .
           file: ./Dockerfile
           push: true
-          tags: santymis/app:release, santymis/app:tag
+          tags: santymis/app:release, santymis/app:${{ env.RELEASE_VERSION }}
 
