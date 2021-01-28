@@ -30,19 +30,6 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-
-      - name: Set up Docker Buildx
-        id: buildx
-        uses: docker/setup-buildx-action@v1
-
-      - name: Build and push
-        id: docker_build
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          file: ./Dockerfile
-          push: true
-          tags: santymis/app:latest
           
       - name: Setup Node.js environment	
         uses: actions/setup-node@v2.1.4	
@@ -56,3 +43,27 @@ jobs:
         
       - name: Run Node
         run: npm run start
+
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: QA Build and push
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: santymis/app:latest
+          
+      - name: PROD Build and push
+        id: prod_docker_build
+        if: startsWith(github.ref/, 'refs/tags/')
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: santymis/app:release, santymis/app:tag
+
