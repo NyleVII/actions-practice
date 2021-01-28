@@ -1,5 +1,5 @@
 {
-  "name": "gh-actions",
+  "name": "actions-practice",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jlai403/gh-actions.git"
+    "url": "git+https://github.com/NyleVII/actions-practice.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jlai403/gh-actions/issues"
+    "url": "https://github.com/NyleVII/actions-practice/issues"
   },
-  "homepage": "https://github.com/jlai403/gh-actions#readme",
+  "homepage": "https://github.com/NyleVII/actions-practice#readme",
   "dependencies": {
     "underscore": "^1.12.0"
   }
