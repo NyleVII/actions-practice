@@ -43,3 +43,9 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: santymis/app:latest
+      
+      - name: Node Install
+        uses: npm install
+        
+      - name: Run Node
+        uses: npm run start
