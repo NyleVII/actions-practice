@@ -8,11 +8,9 @@ on:
   push:
     branches: 
     - main
-    - master
   pull_request:
     branches:
     - main
-    - master
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -27,13 +25,10 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Checkout
-        uses: actions/checkout@v2
-        
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v1
+      - uses: actions/checkout@v2
       
       - name: Set up Docker Buildx
+        id: buildx
         uses: docker/setup-buildx-action@v1
         
       - name: Login to Docker Hub
@@ -50,19 +45,3 @@ jobs:
           platforms: linux/amd64,linux/arm64,linux/386
           push: true
           tags: santymis/app:latest
-
-
-      
-          
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v2.1.4
-        with:
-          node-version: '14.x'
-          # Set always-auth in npmrc
-          always-auth: false
-          
-      - name: Node Install
-        run: npm install
-        
-      - name: Run Node
-        run: npm run start
