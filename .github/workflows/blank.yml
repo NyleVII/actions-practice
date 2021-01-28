@@ -52,7 +52,7 @@ jobs:
           always-auth: false
       
       - name: Node Install
-        uses: npm install
+        run: npm install
         
       - name: Run Node
-        uses: npm run start
+        run: npm run start
