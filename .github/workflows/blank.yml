@@ -67,5 +67,5 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: santymis/app:release,santymis/:${{ env.RELEASE_VERSION }}
+          tags: santymis/app:release,santymis/app:${{ env.RELEASE_VERSION }}
 
