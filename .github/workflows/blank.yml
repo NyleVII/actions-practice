@@ -51,6 +51,7 @@ jobs:
 
       - name: QA Build and push
         id: docker_build
+        if: endsWith(github.ref, 'main')
         uses: docker/build-push-action@v2
         with:
           context: .
